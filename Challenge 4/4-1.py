@@ -9,10 +9,9 @@ def main():
         possible_passwords.append(i)
         i = i + 1
     num_possible_pass = 0
-    test_password(167899)
     for password in possible_passwords:
         if test_password(password):
-           num_possible_pass = num_possible_pass + 1
+            num_possible_pass = num_possible_pass + 1
     print(f"Num Possiblities: {num_possible_pass}")
 
 
@@ -22,12 +21,12 @@ def compare_adjacent(num_arr):
     while i < len(num_arr)-1:
         if num_arr[i] == num_arr[i + 1]:
             print(f"comparing num {i} and num {i+1}")
-            if i + 2 <= len(num_arr)-1 :
+            if i + 2 <= len(num_arr)-1:
                 if(num_arr[i] != num_arr[i + 2]):
                     if i == 0 or (num_arr[i] != num_arr[i - 1]):
                         set_of_two = True
             else:
-                if i == 0 or (num_arr[i] != num_arr[i - 1]):                
+                if i == 0 or (num_arr[i] != num_arr[i - 1]):
                     set_of_two = True
         i = i + 1
     return set_of_two
