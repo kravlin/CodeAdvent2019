@@ -55,9 +55,9 @@ class Intcode():
         self.store(store_loc, store_val)
         self.pointer += 2
 
-    def output_opcode(self):
+    def output_opcode(self, mode1):
         self.logger.info(f"Output Opcode at {self.pointer}")
-        return_value = self.get_value(0, self.pointer + 1)
+        return_value = self.get_value(mode1, self.pointer + 1)
         self.pointer += 2
         return return_value
 
@@ -97,7 +97,7 @@ class Intcode():
         first_val = self.get_value(mode1, self.pointer + 1)
         second_val = self.get_value(mode2, self.pointer + 2)
         store_loc = self.get_value(1, self.pointer + 3)
-        if first_val < second_val:
+        if first_val == second_val:
             self.store(store_loc, 1)
         else:
             self.store(store_loc, 0)
@@ -119,7 +119,7 @@ class Intcode():
             elif opcode == 3:  # Input
                 self.input_opcode()
             elif opcode == 4:  # Output
-                print(f"Outputting Value: {self.output_opcode()}")
+                print(f"Outputting Value: {self.output_opcode(mode1)}")
             elif opcode == 5:  # Jump if TRUE
                 self.jump_true_opcode(mode1, mode2)
             elif opcode == 6:  # Jump if FALSE
